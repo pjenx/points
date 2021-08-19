@@ -1,0 +1,11 @@
+{
+  "name": "points",
+  "version": "1.0.0",
+  "description": "\"Fecth coding challenge\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Paul Jenkins",
+  "license": "ISC"
+}
