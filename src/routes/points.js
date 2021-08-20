@@ -15,7 +15,7 @@ router.get("/points/balance", async (req, res) => {
 
 router.post("/points/spend", async (req, res) => {
 
-  // check validity of request obj - basic, could be middleware
+  // check validity of request obj - basic, could be middleware - should futher validate types, etc.
   const keys = Object.keys(req.body);
   const reqiredKeys = ["points"];
   const isValid = keys.every((key) => reqiredKeys.includes(key));
@@ -26,8 +26,7 @@ router.post("/points/spend", async (req, res) => {
 
   try {
     const spent = spend(pointsToSpend);
-    // res.send('OK');
-    res.send(spent);
+    res.status(201).send(spent);
 
   } catch (e) {
     res.status(400).send(e.message);

@@ -13,10 +13,8 @@ router.post("/transaction", async (req, res) => {
   }
 
   try {
-    addTransaction(req.body);
-    res.send({
-      message: "transaction added.",
-    });
+    const completedTransaction = addTransaction(req.body);
+    res.status(201).send(completedTransaction);
   } catch (e) {
     res.status(400).send(e);
   }

@@ -20,7 +20,13 @@ const getBalanceService = () => {
     }
   }
 
-    return balances;
+  //adjust balances format
+  let balAdj = {}
+  for (balance of balances) {
+    balAdj[balance.payer] = balance.points;
+  }
+
+  return balAdj;
 }
 
 module.exports = getBalanceService;
