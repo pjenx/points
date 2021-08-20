@@ -1,8 +1,10 @@
 const express = require("express");
 const router = new express.Router();
+const addTransaction = require('../services/transaction/addTransactionService');
 
 router.post("/transaction", async (req, res) => {
-  //check validity
+
+  //check validity of request obj - basic, could be middleware
   const keys = Object.keys(req.body);
   const reqiredKeys = ["payer", "points", "timestamp"];
   const isValid = keys.every((key) => reqiredKeys.includes(key));
@@ -11,10 +13,9 @@ router.post("/transaction", async (req, res) => {
   }
 
   try {
-    global.transactions = [...global.transactions, req.body];
+    addTransaction(req.body);
     res.send({
       message: "transaction added.",
-      // transactions: global.transactions,
     });
   } catch (e) {
     res.status(400).send(e);
